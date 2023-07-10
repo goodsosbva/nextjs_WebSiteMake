@@ -1,4 +1,3 @@
-
 ## Getting Started
 
 First, run the development server:
@@ -12,13 +11,16 @@ pnpm dev
 ```
 
 ## 1. 환경 설정
+
 ### 1-1. 스타일 컴포넌트 설정
+
 ```bash
 npm i styled-components
 npm install --save-dev @types/styled-components
 ```
 
 ### 1-2. ESLint 설정
+
 ```bash
 npm install --save-dev prettier eslint typescript-eslint @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint-config-prettier eslint-plugin-prettier eslint-plugin-react eslint-plugin-react-hooks eslint-plugin-import
 
@@ -28,6 +30,7 @@ npm run format: 소스 코드의 포맷을 자동으로 수행
 ```
 
 ### 1-3. 스토리북 설정
+
 ```bash
 npx sb init
 
@@ -40,7 +43,7 @@ npm run storybook
 
 ### 1-4. 에셋 설치
 
-./storybook/maib.js 
+./storybook/maib.js
 
 ### 1-5. 스토리북 테마 설정
 
@@ -59,12 +62,14 @@ npm install swr
 ```
 
 ### 1-8. React Content Loader 도입
+
 ```bash
 npm install react-content-loader
 npm install --save-dev @types/react-content-loader
 ```
 
 ### 1-9. 머티리얼 아이콘 설정
+
 ```bash
 npm install @mui/material @mui/icons-material @emotion/react @emotion/styled
 ```
@@ -73,7 +78,6 @@ npm install @mui/material @mui/icons-material @emotion/react @emotion/styled
 
 .env 파일에 정의
 
-
 ### 1-11. 테스트 환경 구축
 
 ```bash
@@ -81,6 +85,13 @@ npm install --save jest @testing-library/react @testing-library/jest-dom jest-en
 ```
 
 ### 1-12. 백엔드 역할
+
 ts-nextbook-json 폴더로 정의된 json 서버로 대체
 
+</hr>
 
+## 2. 어플리케이션 아키텍쳐 구현
+
+### 2-1. API 클라이언트 구현
+
+### 2-2. 컴포넌트 구현 준비(타입 정의, 반응형, 래퍼 컴포넌트 구현)

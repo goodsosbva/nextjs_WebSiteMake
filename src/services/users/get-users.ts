@@ -1,27 +1,26 @@
 import type { ApiContext, User } from "../../types/data";
 import { fetcher } from "../../utils";
 
-export type SigninParams = {
-  username: string;
-  password: string;
+export type GetUserParams = {
+  // 사용자 id
+  id: number;
 };
 
-// 인증 api 로그인
-const signin = async (
+// 사용자 API (개별 취득)
+const getUser = async (
   context: ApiContext,
-  params: SigninParams
+  { id }: GetUserParams
 ): Promise<User> => {
+  // 사용자 API
   return await fetcher(
     `${context.apiRootUrl.replace(/\/$/g, "")}/auth/signin`,
     {
-      method: "POST",
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(params),
     }
   );
 };
 
-export default signin;
+export default getUser;
