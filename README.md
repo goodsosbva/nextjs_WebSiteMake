@@ -1,4 +1,3 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
 
@@ -12,27 +11,76 @@ yarn dev
 pnpm dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 1. 환경 설정
+### 1-1. 스타일 컴포넌트 설정
+```bash
+npm i styled-components
+npm install --save-dev @types/styled-components
+```
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+### 1-2. ESLint 설정
+```bash
+npm install --save-dev prettier eslint typescript-eslint @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint-config-prettier eslint-plugin-prettier eslint-plugin-react eslint-plugin-react-hooks eslint-plugin-import
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+// 린트 실행
+npm run lint: lint 수행, 코드 문제 출력
+npm run format: 소스 코드의 포맷을 자동으로 수행
+```
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+### 1-3. 스토리북 설정
+```bash
+npx sb init
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+// 스토리북 관련 기타 라이브러리 설치
+npm install --save-dev @storybook/addon-postcss tsconfig-paths-webpack-plugin @babel/plugin-proposal-class-properties @babel/plugin-proposal-private-methods @babel/plugin-proposal-private-property-in-object tsconfig-paths-webpack-plugin @mdx-js/react
 
-## Learn More
+// 실행
+npm run storybook
+```
 
-To learn more about Next.js, take a look at the following resources:
+### 1-4. 에셋 설치
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+./storybook/maib.js 
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+### 1-5. 스토리북 테마 설정
 
-## Deploy on Vercel
+/src/themes/...
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### 1-6. React Hook Form 설정
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+```bash
+npm install react-book-form
+```
+
+### 1-7. SWR 도입
+
+```bash
+npm install swr
+```
+
+### 1-8. React Content Loader 도입
+```bash
+npm install react-content-loader
+npm install --save-dev @types/react-content-loader
+```
+
+### 1-9. 머티리얼 아이콘 설정
+```bash
+npm install @mui/material @mui/icons-material @emotion/react @emotion/styled
+```
+
+### 1-10. 환경 변수 설정
+
+.env 파일에 정의
+
+
+### 1-11. 테스트 환경 구축
+
+```bash
+npm install --save jest @testing-library/react @testing-library/jest-dom jest-environment-jsdom
+```
+
+### 1-12. 백엔드 역할
+ts-nextbook-json 폴더로 정의된 json 서버로 대체
+
+
