@@ -32,7 +32,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 `;
 
-// Theme
+// Themeの適用
 addDecorator((story) => (
   <ThemeProvider theme={theme}>
     <GlobalStyle />
@@ -40,7 +40,7 @@ addDecorator((story) => (
   </ThemeProvider>
 ));
 
-// next/image
+// next/imageの差し替え
 const OriginalNextImage = NextImage.default;
 
 Object.defineProperty(NextImage, "default", {
