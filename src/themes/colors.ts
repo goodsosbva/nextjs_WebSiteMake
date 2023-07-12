@@ -12,6 +12,7 @@ const colors = {
   black: "#000000",
   white: "#ffffff",
   text: "#000000",
+  icon: "blue",
 } as const;
 
 export default colors;
