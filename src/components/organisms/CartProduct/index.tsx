@@ -1,10 +1,10 @@
-import Image from "next/image";
-import Link from "next/link";
-import styled from "styled-components";
-import Button from "../../atoms/Button";
-import Text from "../../atoms/Text";
-import Box from "../../layout/Box";
-import Flex from "../../layout/Flex";
+import Image from 'next/image'
+import Link from 'next/link'
+import styled from 'styled-components'
+import Button from 'components/atoms/Button'
+import Text from 'components/atoms/Text'
+import Box from 'components/layout/Box'
+import Flex from 'components/layout/Flex'
 
 // 삭제 버튼의 텍스트
 const RemoveText = styled(Text)`
@@ -12,33 +12,33 @@ const RemoveText = styled(Text)`
   &:hover {
     text-decoration: underline;
   }
-`;
+`
 
 interface CartProductProps {
   /**
    * 상품 ID
    */
-  id: number;
+  id: number
   /**
    * 상품 이미지 URL
    */
-  imageUrl: string;
+  imageUrl: string
   /**
    * 상품명
    */
-  title: string;
+  title: string
   /**
    * 상품 가격
    */
-  price: number;
+  price: number
   /**
    * 구입 버튼을 클릭했을 때의 이벤트 핸들러
    */
-  onBuyButtonClick?: (id: number) => void;
+  onBuyButtonClick?: (id: number) => void
   /**
    * 삭제 버튼을 클릭했을 때의 이벤트 핸들러
    */
-  onRemoveButtonClick?: (id: number) => void;
+  onRemoveButtonClick?: (id: number) => void
 }
 
 /**
@@ -92,7 +92,7 @@ const CartProduct = ({
             <Flex marginTop={{ base: 2, md: 0 }}>
               {/* 구입 버튼 */}
               <Button
-                width={{ base: "100px", md: "200px" }}
+                width={{ base: '100px', md: '200px' }}
                 onClick={() => onBuyButtonClick && onBuyButtonClick(id)}
               >
                 구입
@@ -100,8 +100,8 @@ const CartProduct = ({
               {/* 삭제 버튼(모바일) */}
               <Button
                 marginLeft={1}
-                width={{ base: "100px", md: "200px" }}
-                display={{ base: "block", md: "none" }}
+                width={{ base: '100px', md: '200px' }}
+                display={{ base: 'block', md: 'none' }}
                 variant="danger"
                 onClick={() => onRemoveButtonClick && onRemoveButtonClick(id)}
               >
@@ -111,7 +111,7 @@ const CartProduct = ({
           </Flex>
         </Box>
       </Flex>
-      <Box display={{ base: "none", md: "block" }}>
+      <Box display={{ base: 'none', md: 'block' }}>
         {/* 삭제 버튼(데스크톱) */}
         <RemoveText
           color="danger"
@@ -121,7 +121,7 @@ const CartProduct = ({
         </RemoveText>
       </Box>
     </Flex>
-  );
-};
+  )
+}
 
-export default CartProduct;
+export default CartProduct

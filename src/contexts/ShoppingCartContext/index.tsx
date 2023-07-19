@@ -1,12 +1,12 @@
-import React, { useReducer, useContext } from "react";
-import { shopReducer, ADD_PRODUCT, REMOVE_PRODUCT } from "./reducers";
-import type { Product } from "../../types";
+import React, { useReducer, useContext } from 'react'
+import { shopReducer, ADD_PRODUCT, REMOVE_PRODUCT } from './reducers'
+import type { Product } from 'types'
 
 type ShoppingCartContextType = {
-  cart: Product[];
-  addProductToCart: (product: Product) => void;
-  removeProductFromCart: (productId: number) => void;
-};
+  cart: Product[]
+  addProductToCart: (product: Product) => void
+  removeProductFromCart: (productId: number) => void
+}
 
 const ShoppingCartContext = React.createContext<ShoppingCartContextType>({
   cart: [],
@@ -14,13 +14,13 @@ const ShoppingCartContext = React.createContext<ShoppingCartContextType>({
   addProductToCart: () => {},
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   removeProductFromCart: () => {},
-});
+})
 
 export const useShoppingCartContext = (): ShoppingCartContextType =>
-  useContext<ShoppingCartContextType>(ShoppingCartContext);
+  useContext<ShoppingCartContextType>(ShoppingCartContext)
 
 interface ShoppingCartContextProviderProps {
-  children?: React.ReactNode;
+  children?: React.ReactNode
 }
 
 /**
@@ -29,18 +29,18 @@ interface ShoppingCartContextProviderProps {
 export const ShoppingCartContextProvider = ({
   children,
 }: ShoppingCartContextProviderProps) => {
-  const products: Product[] = [];
-  const [cartState, dispatch] = useReducer(shopReducer, products);
+  const products: Product[] = []
+  const [cartState, dispatch] = useReducer(shopReducer, products)
 
   // 상푸을 카트에 추가
   const addProductToCart = (product: Product) => {
-    dispatch({ type: ADD_PRODUCT, payload: product });
-  };
+    dispatch({ type: ADD_PRODUCT, payload: product })
+  }
 
   // 상품을 카트에서 삭제
   const removeProductFromCart = (productId: number) => {
-    dispatch({ type: REMOVE_PRODUCT, payload: productId });
-  };
+    dispatch({ type: REMOVE_PRODUCT, payload: productId })
+  }
 
   return (
     <ShoppingCartContext.Provider
@@ -52,5 +52,5 @@ export const ShoppingCartContextProvider = ({
     >
       {children}
     </ShoppingCartContext.Provider>
-  );
-};
+  )
+}

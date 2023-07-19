@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 /**
  * 빵 부스러기 리스트 요소
@@ -9,7 +9,7 @@ const BreadcrumbItem = styled.li`
 
   &:not(:first-child) {
     &::before {
-      content: "/";
+      content: '/';
       color: ${({ theme }) => theme.colors.gray};
       padding: 0px 8px;
     }
@@ -21,6 +21,6 @@ const BreadcrumbItem = styled.li`
       text-decoration: underline;
     }
   }
-`;
+`
 
-export default BreadcrumbItem;
+export default BreadcrumbItem

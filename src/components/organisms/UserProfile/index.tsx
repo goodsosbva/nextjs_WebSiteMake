@@ -1,42 +1,42 @@
-import ShapeImage from "../../atoms/ShapeImage";
-import Text from "../../atoms/Text";
-import Box from "../../layout/Box";
-import Flex from "../../layout/Flex";
+import ShapeImage from 'components/atoms/ShapeImage'
+import Text from 'components/atoms/Text'
+import Box from 'components/layout/Box'
+import Flex from 'components/layout/Flex'
 
 interface UserProfileProps {
   /**
    * 변형(표지 스타일)
    */
-  variant?: "normal" | "small";
+  variant?: 'normal' | 'small'
   /**
    * 사용자명
    */
-  username: string;
+  username: string
   /**
    * 사용자 이미지 URL
    */
-  profileImageUrl: string;
+  profileImageUrl: string
   /**
    * 사용자가 소유한 상품 수
    */
-  numberOfProducts: number;
+  numberOfProducts: number
   /**
    * 사용자 설명
    */
-  description?: string;
+  description?: string
 }
 
 /**
  * 사용자 프로파일
  */
 const UserProfile = ({
-  variant = "normal",
+  variant = 'normal',
   username,
   profileImageUrl,
   numberOfProducts,
   description,
 }: UserProfileProps) => {
-  const profileImageSize = variant === "small" ? "100px" : "120px";
+  const profileImageSize = variant === 'small' ? '100px' : '120px'
 
   return (
     <Flex>
@@ -73,7 +73,7 @@ const UserProfile = ({
               {numberOfProducts}개 제품 게시 완료
             </Text>
             {/* 사용자 개요 */}
-            {variant === "normal" && (
+            {variant === 'normal' && (
               <Text margin={0} as="p">
                 {description}
               </Text>
@@ -82,7 +82,7 @@ const UserProfile = ({
         </Flex>
       </Box>
     </Flex>
-  );
-};
+  )
+}
 
-export default UserProfile;
+export default UserProfile

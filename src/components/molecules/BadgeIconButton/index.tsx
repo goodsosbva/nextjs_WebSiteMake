@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import Badge from "../../../components/atoms/Badge";
+import styled from 'styled-components'
+import Badge from 'components/atoms/Badge'
 
 const BadgeIconButtonWrapper = styled.span<{ size: number | string }>`
   position: relative;
@@ -7,27 +7,27 @@ const BadgeIconButtonWrapper = styled.span<{ size: number | string }>`
   align-items: center;
   height: ${({ size }) => size};
   width: ${({ size }) => size};
-`;
+`
 
 const BadgeWrapper = styled.div`
   position: absolute;
   top: -7px;
   right: -10px;
-`;
+`
 
 type BadgeIconButton = {
-  icon: React.ReactNode;
-  badgeContent?: number;
-  badgeBackgroundColor: string;
-  size?: number | string;
-};
+  icon: React.ReactNode
+  badgeContent?: number
+  badgeBackgroundColor: string
+  size?: number | string
+}
 
 /**
  * 배지가 달린 아이콘 버튼
  */
 const BadgeIconButton = ({
   icon,
-  size = "24px",
+  size = '24px',
   badgeContent,
   badgeBackgroundColor,
 }: BadgeIconButton) => {
@@ -43,7 +43,7 @@ const BadgeIconButton = ({
         </BadgeWrapper>
       )}
     </BadgeIconButtonWrapper>
-  );
-};
+  )
+}
 
-export default BadgeIconButton;
+export default BadgeIconButton

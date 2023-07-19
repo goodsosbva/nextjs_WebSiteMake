@@ -1,11 +1,11 @@
-import styled from "styled-components";
-import { CloseIcon } from "../../atoms/IconButton";
-import Box from "../../layout/Box";
-import Flex from "../../layout/Flex";
+import styled from 'styled-components'
+import { CloseIcon } from 'components/atoms/IconButton'
+import Box from 'components/layout/Box'
+import Flex from 'components/layout/Flex'
 
 const ImagePreviewContainer = styled(Box)`
   position: relative;
-`;
+`
 
 const CloseBox = styled(Flex)`
   position: absolute;
@@ -16,29 +16,29 @@ const CloseBox = styled(Flex)`
   border-radius: 0 6px 0 6px;
   background-color: rgba(44, 44, 44, 0.66);
   cursor: pointer;
-`;
+`
 
 interface ImagePreviewProps {
   /**
    * 이미지 URL
    */
-  src?: string;
+  src?: string
   /**
    * 대체 텍스트
    */
-  alt?: string;
+  alt?: string
   /**
    * 세로폭
    */
-  height?: string;
+  height?: string
   /**
    * 가로폭
    */
-  width?: string;
+  width?: string
   /**
    * 삭제 버튼을 클릭했을 떄의 이벤트 핸들러
    */
-  onRemove?: (src: string) => void;
+  onRemove?: (src: string) => void
 }
 
 /**
@@ -53,12 +53,12 @@ const ImagePreview = ({
 }: ImagePreviewProps) => {
   // 닫기 버튼을 클릭하면 onRemove를 호출한다
   const handleCloseClick = (e: React.MouseEvent<HTMLDivElement>) => {
-    e.preventDefault();
-    e.stopPropagation();
-    onRemove && src && onRemove(src);
+    e.preventDefault()
+    e.stopPropagation()
+    onRemove && src && onRemove(src)
 
-    return false;
-  };
+    return false
+  }
 
   return (
     <ImagePreviewContainer height={height} width={width}>
@@ -72,7 +72,7 @@ const ImagePreview = ({
         <CloseIcon size={24} color="white" />
       </CloseBox>
     </ImagePreviewContainer>
-  );
-};
+  )
+}
 
-export default ImagePreview;
+export default ImagePreview

@@ -1,27 +1,27 @@
-import { Controller, useForm } from "react-hook-form";
-import Button from "../../atoms/Button";
-import Input from "../../atoms/Input";
-import Text from "../../atoms/Text";
-import TextArea from "../../atoms/TextArea";
-import Box from "../../layout/Box";
-import Dropdown from "../../molecules/Dropdown";
-import InputImages, { FileData } from "../../molecules/InputImages";
-import type { Category, Condition } from "../../../types";
+import { Controller, useForm } from 'react-hook-form'
+import Button from 'components/atoms/Button'
+import Input from 'components/atoms/Input'
+import Text from 'components/atoms/Text'
+import TextArea from 'components/atoms/TextArea'
+import Box from 'components/layout/Box'
+import Dropdown from 'components/molecules/Dropdown'
+import InputImages, { FileData } from 'components/molecules/InputImages'
+import type { Category, Condition } from 'types'
 
 export type ProductFormData = {
-  image: FileData[];
-  title: string;
-  description: string;
-  category: Category;
-  condition: Condition;
-  price: string;
-};
+  image: FileData[]
+  title: string
+  description: string
+  category: Category
+  condition: Condition
+  price: string
+}
 
 interface ProductFormProps {
   /**
    * 게시 버튼을 클릭했을 때의 이벤트 핸들러
    */
-  onProductSave?: (data: ProductFormData) => void;
+  onProductSave?: (data: ProductFormData) => void
 }
 
 /**
@@ -34,10 +34,10 @@ const ProductForm = ({ onProductSave }: ProductFormProps) => {
     handleSubmit,
     control,
     formState: { errors },
-  } = useForm<ProductFormData>();
+  } = useForm<ProductFormData>()
   const onSubmit = (data: ProductFormData) => {
-    onProductSave && onProductSave(data);
-  };
+    onProductSave && onProductSave(data)
+  }
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
@@ -80,7 +80,7 @@ const ProductForm = ({ onProductSave }: ProductFormProps) => {
           </Text>
           {/* 상품 제목 입력 */}
           <Input
-            {...register("title", { required: true })}
+            {...register('title', { required: true })}
             name="title"
             type="text"
             placeholder="상품 제목"
@@ -130,9 +130,9 @@ const ProductForm = ({ onProductSave }: ProductFormProps) => {
             render={({ field: { onChange, value }, fieldState: { error } }) => (
               <Dropdown
                 options={[
-                  { value: "shoes", label: "슈즈" },
-                  { value: "clothes", label: "의류" },
-                  { value: "book", label: "책" },
+                  { value: 'shoes', label: '슈즈' },
+                  { value: 'clothes', label: '의류' },
+                  { value: 'book', label: '책' },
                 ]}
                 hasError={!!error}
                 value={value}
@@ -160,11 +160,11 @@ const ProductForm = ({ onProductSave }: ProductFormProps) => {
             render={({ field: { onChange, value }, fieldState: { error } }) => (
               <Dropdown
                 options={[
-                  { value: "used", label: "중고" },
-                  { value: "new", label: "신품" },
+                  { value: 'used', label: '중고' },
+                  { value: 'new', label: '신품' },
                 ]}
                 hasError={!!error}
-                value={value ?? "used"}
+                value={value ?? 'used'}
                 placeholder="Please select condition"
                 onChange={(v) => onChange(v?.value)}
               />
@@ -182,7 +182,7 @@ const ProductForm = ({ onProductSave }: ProductFormProps) => {
           </Text>
           {/* 가격 입력 */}
           <Input
-            {...register("price", { required: true })}
+            {...register('price', { required: true })}
             name="price"
             type="number"
             placeholder="1000"
@@ -199,7 +199,7 @@ const ProductForm = ({ onProductSave }: ProductFormProps) => {
         등록
       </Button>
     </form>
-  );
-};
+  )
+}
 
-export default ProductForm;
+export default ProductForm

@@ -1,23 +1,23 @@
-import Link from "next/link";
-import { Fragment } from "react";
-import ProductCard from "../components/organisms/ProductCard";
-import ProductCardList from "@/components/organisms/ProductCardList";
-import useSearch from "../services/product/use-search";
-import type { ApiContext, Product } from "@/types";
+import Link from 'next/link'
+import { Fragment } from 'react'
+import ProductCard from 'components/organisms/ProductCard'
+import ProductCardList from 'components/organisms/ProductCardList'
+import useSearch from 'services/products/use-search'
+import type { ApiContext, Product } from 'types'
 
 const context: ApiContext = {
-  apiRootUrl: process.env.NEXT_PUBLIC_API_BASE_PATH || "/api/proxy",
-};
+  apiRootUrl: process.env.NEXT_PUBLIC_API_BASE_PATH || '/api/proxy',
+}
 
 interface UserProductCardListContainerProps {
   /**
    * 상품을 소유한 사용자 ID
    */
-  userId: number;
+  userId: number
   /**
    * 초기에 표시할 상품 리스트
    */
-  products?: Product[];
+  products?: Product[]
 }
 
 /**
@@ -31,7 +31,7 @@ const UserProductCardListContainer = ({
   const { products: userProducts } = useSearch(context, {
     userId,
     initial: products,
-  });
+  })
 
   return (
     <ProductCardList numberPerRow={6} numberPerRowForMobile={2}>
@@ -51,7 +51,7 @@ const UserProductCardListContainer = ({
         </Fragment>
       ))}
     </ProductCardList>
-  );
-};
+  )
+}
 
-export default UserProductCardListContainer;
+export default UserProductCardListContainer

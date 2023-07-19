@@ -1,17 +1,17 @@
-import { Product } from "../../types";
+import { Product } from 'types'
 
-export const ADD_PRODUCT = "ADD_PRODUCT";
-export const REMOVE_PRODUCT = "REMOVE_PRODUCT";
+export const ADD_PRODUCT = 'ADD_PRODUCT'
+export const REMOVE_PRODUCT = 'REMOVE_PRODUCT'
 
 type ShopReducerAction =
   | {
-      type: "ADD_PRODUCT";
-      payload: Product;
+      type: 'ADD_PRODUCT'
+      payload: Product
     }
   | {
-      type: "REMOVE_PRODUCT";
-      payload: number;
-    };
+      type: 'REMOVE_PRODUCT'
+      payload: number
+    }
 
 /**
  * 상품 추가 액션
@@ -20,8 +20,8 @@ type ShopReducerAction =
  * @returns 다음 상태
  */
 const addProductToCart = (product: Product, state: Product[]) => {
-  return [...state, product];
-};
+  return [...state, product]
+}
 
 /**
  * 상품 삭제 액션
@@ -30,12 +30,12 @@ const addProductToCart = (product: Product, state: Product[]) => {
  * @returns 다음 상태
  */
 const removeProductFromCart = (productId: number, state: Product[]) => {
-  const removedItemIndex = state.findIndex((item) => item.id === productId);
+  const removedItemIndex = state.findIndex((item) => item.id === productId)
 
-  state.splice(removedItemIndex, 1);
+  state.splice(removedItemIndex, 1)
 
-  return [...state];
-};
+  return [...state]
+}
 
 /**
  * 쇼핑 카트 Reducer
@@ -45,14 +45,14 @@ const removeProductFromCart = (productId: number, state: Product[]) => {
  */
 export const shopReducer: React.Reducer<Product[], ShopReducerAction> = (
   state: Product[],
-  action: ShopReducerAction
+  action: ShopReducerAction,
 ) => {
   switch (action.type) {
     case ADD_PRODUCT:
-      return addProductToCart(action.payload, state);
+      return addProductToCart(action.payload, state)
     case REMOVE_PRODUCT:
-      return removeProductFromCart(action.payload, state);
+      return removeProductFromCart(action.payload, state)
     default:
-      return state;
+      return state
   }
-};
+}

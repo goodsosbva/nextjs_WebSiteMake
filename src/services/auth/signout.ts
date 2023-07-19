@@ -1,5 +1,5 @@
-import type { ApiContext } from "@/types";
-import { fetcher } from "@/utils";
+import type { ApiContext } from 'types'
+import { fetcher } from 'utils'
 
 /**
  * 인증 API(로그아웃)
@@ -8,15 +8,15 @@ import { fetcher } from "@/utils";
  */
 const signout = async (context: ApiContext): Promise<{ message: string }> => {
   return await fetcher(
-    `${context.apiRootUrl.replace(/\/$/g, "")}/auth/signout`,
+    `${context.apiRootUrl.replace(/\/$/g, '')}/auth/signout`,
     {
-      method: "POST",
+      method: 'POST',
       headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
       },
-    }
-  );
-};
+    },
+  )
+}
 
-export default signout;
+export default signout

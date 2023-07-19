@@ -14,7 +14,7 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
-    "baseUrl": ".",
+    "baseUrl": "src", // 이 부분이 src/ 하게 해주는것
     "paths": {
       "@/*": ["./src/*"]
     }

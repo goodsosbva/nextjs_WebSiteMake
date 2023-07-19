@@ -1,10 +1,10 @@
-import Separator from "../../atoms/Separator";
-import Box from "../../layout/Box";
-import Footer from "../../organisms/Footer";
-import Header from "../../organisms/Header";
+import Separator from 'components/atoms/Separator'
+import Box from 'components/layout/Box'
+import Footer from 'components/organisms/Footer'
+import Header from 'components/organisms/Header'
 
 interface LayoutProps {
-  children: React.ReactNode;
+  children: React.ReactNode
 }
 
 const Layout = ({ children }: LayoutProps) => {
@@ -17,7 +17,7 @@ const Layout = ({ children }: LayoutProps) => {
         <Footer />
       </Box>
     </>
-  );
-};
+  )
+}
 
-export default Layout;
+export default Layout

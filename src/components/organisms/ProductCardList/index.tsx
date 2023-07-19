@@ -1,14 +1,14 @@
-import Grid from "@/components/layout/Grid";
+import Grid from 'components/layout/Grid'
 
 interface ProductCardListProps {
   /**
    * 1행에 표시할 상품 수
    */
-  numberPerRow?: number;
+  numberPerRow?: number
   /**
    * 모바일에서 1행에 표시할 상품 수
    */
-  numberPerRowForMobile?: number;
+  numberPerRowForMobile?: number
 }
 
 /**
@@ -29,7 +29,7 @@ const ProductCardList = ({
     >
       {children}
     </Grid>
-  );
-};
+  )
+}
 
-export default ProductCardList;
+export default ProductCardList

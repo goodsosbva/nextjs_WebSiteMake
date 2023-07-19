@@ -1,12 +1,12 @@
-import React, { useEffect, useState, useRef, useCallback } from "react";
-import styled from "styled-components";
-import Text from "../../atoms/Text";
-import Flex from "../../layout/Flex";
+import React, { useEffect, useState, useRef, useCallback } from 'react'
+import styled from 'styled-components'
+import Text from 'components/atoms/Text'
+import Flex from 'components/layout/Flex'
 
 const DropdownRoot = styled.div`
   position: relative;
   height: 38px;
-`;
+`
 
 // 드롭다운 형태
 const DropdownControl = styled.div<{ hasError?: boolean }>`
@@ -22,11 +22,11 @@ const DropdownControl = styled.div<{ hasError?: boolean }>`
   cursor: default;
   outline: none;
   padding: 8px 52px 8px 12px;
-`;
+`
 
 const DropdownValue = styled.div`
   color: ${({ theme }) => theme.colors.text};
-`;
+`
 
 // 드롭다운 플레이스홀더
 const DropdownPlaceholder = styled.div`
@@ -34,17 +34,17 @@ const DropdownPlaceholder = styled.div`
   font-size: ${({ theme }) => theme.fontSizes[1]};
   min-height: 20px;
   line-height: 20px;
-`;
+`
 
 // 드롭다운 화살표의 형태
 const DropdownArrow = styled.div<{ isOpen?: boolean }>`
   border-color: ${({ isOpen }) =>
     isOpen
-      ? "transparent transparent #222222;"
-      : "#222222 transparent transparent"};
-  border-width: ${({ isOpen }) => (isOpen ? "0 5px 5px" : "5px 5px 0;")};
+      ? 'transparent transparent #222222;'
+      : '#222222 transparent transparent'};
+  border-width: ${({ isOpen }) => (isOpen ? '0 5px 5px' : '5px 5px 0;')};
   border-style: solid;
-  content: " ";
+  content: ' ';
   display: block;
   height: 0;
   margin-top: -ceil(2.5);
@@ -52,7 +52,7 @@ const DropdownArrow = styled.div<{ isOpen?: boolean }>`
   right: 10px;
   top: 16px;
   width: 0;
-`;
+`
 
 const DropdownMenu = styled.div`
   background-color: #ffffff;
@@ -68,21 +68,21 @@ const DropdownMenu = styled.div`
   top: 100%;
   width: 100%;
   z-index: 1000;
-`;
+`
 
 const DropdownOption = styled.div`
   padding: 8px 12px 8px 12px;
   &:hover {
     background-color: #f9f9f9;
   }
-`;
+`
 
 interface DropdownItemProps {
-  item: DropdownItem;
+  item: DropdownItem
 }
 
 const DropdownItem = (props: DropdownItemProps) => {
-  const { item } = props;
+  const { item } = props
 
   return (
     <Flex alignItems="center">
@@ -90,97 +90,97 @@ const DropdownItem = (props: DropdownItemProps) => {
         {item.label ?? item.value}
       </Text>
     </Flex>
-  );
-};
+  )
+}
 
 export interface DropdownItem {
-  value: string | number | null;
-  label?: string;
+  value: string | number | null
+  label?: string
 }
 
 interface DropdownProps {
   /**
    * 드롭다운 선택지
    */
-  options: DropdownItem[];
+  options: DropdownItem[]
   /**
    * 드롭다운 값
    */
-  value?: string | number;
+  value?: string | number
   /**
    * <input />의 name 속성
    */
-  name?: string;
+  name?: string
   /**
    * 플레이스홀더
    */
-  placeholder?: string;
+  placeholder?: string
   /**
    * 변형 에러 플래그
    */
-  hasError?: boolean;
+  hasError?: boolean
   /**
    * 값이 변화했을 때의 이벤트 핸들러
    */
-  onChange?: (selected?: DropdownItem) => void;
+  onChange?: (selected?: DropdownItem) => void
 }
 
 /**
  * ドロップダウン
  */
 const Dropdown = (props: DropdownProps) => {
-  const { onChange, name, value, options, hasError } = props;
-  const initialItem = options.find((i) => i.value === value);
-  const [isOpen, setIsOpenValue] = useState(false);
-  const [selectedItem, setSelectedItem] = useState(initialItem);
-  const dropdownRef = useRef<HTMLDivElement>(null);
+  const { onChange, name, value, options, hasError } = props
+  const initialItem = options.find((i) => i.value === value)
+  const [isOpen, setIsOpenValue] = useState(false)
+  const [selectedItem, setSelectedItem] = useState(initialItem)
+  const dropdownRef = useRef<HTMLDivElement>(null)
 
   const handleDocumentClick = useCallback(
     (e: MouseEvent | TouchEvent) => {
-      // 자기 자신을 클릭한 경우는 아무것도 하지 않습니다.
+      // 自分自身をクリックした場合は何もしない
       if (dropdownRef.current) {
-        const elems = dropdownRef.current.querySelectorAll("*");
+        const elems = dropdownRef.current.querySelectorAll('*')
 
         for (let i = 0; i < elems.length; i++) {
           if (elems[i] == e.target) {
-            return;
+            return
           }
         }
       }
 
-      setIsOpenValue(false);
+      setIsOpenValue(false)
     },
-    [dropdownRef]
-  );
+    [dropdownRef],
+  )
 
   const handleMouseDown = (e: React.SyntheticEvent) => {
-    setIsOpenValue((isOpen) => !isOpen);
-    e.stopPropagation();
-  };
+    setIsOpenValue((isOpen) => !isOpen)
+    e.stopPropagation()
+  }
 
   const handleSelectValue = (
     e: React.FormEvent<HTMLDivElement>,
-    item: DropdownItem
+    item: DropdownItem,
   ) => {
-    e.stopPropagation();
+    e.stopPropagation()
 
-    setSelectedItem(item);
-    setIsOpenValue(false);
-    onChange && onChange(item);
-  };
+    setSelectedItem(item)
+    setIsOpenValue(false)
+    onChange && onChange(item)
+  }
 
   useEffect(() => {
     // 画面外のクリックとタッチをイベントを設定
-    document.addEventListener("click", handleDocumentClick, false);
-    document.addEventListener("touchend", handleDocumentClick, false);
+    document.addEventListener('click', handleDocumentClick, false)
+    document.addEventListener('touchend', handleDocumentClick, false)
 
     return function cleanup() {
-      document.removeEventListener("click", handleDocumentClick, false);
-      document.removeEventListener("touchend", handleDocumentClick, false);
-    };
+      document.removeEventListener('click', handleDocumentClick, false)
+      document.removeEventListener('touchend', handleDocumentClick, false)
+    }
     // 最初だけ呼び出す
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [])
 
   return (
     <DropdownRoot ref={dropdownRef}>
@@ -203,7 +203,7 @@ const Dropdown = (props: DropdownProps) => {
         <input
           type="hidden"
           name={name}
-          value={selectedItem?.value ?? ""}
+          value={selectedItem?.value ?? ''}
           onChange={() => onChange && onChange(selectedItem)}
         />
         <DropdownArrow isOpen={isOpen} />
@@ -224,7 +224,7 @@ const Dropdown = (props: DropdownProps) => {
         </DropdownMenu>
       )}
     </DropdownRoot>
-  );
-};
+  )
+}
 
-export default Dropdown;
+export default Dropdown

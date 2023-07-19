@@ -1,48 +1,51 @@
-import React, { useRef, useState, useCallback, useEffect } from "react";
-import styled from "styled-components";
-import { CheckBoxOutlineBlankIcon, CheckBoxIcon } from "../../atoms/IconButton";
-import Text from "../../atoms/Text";
-import Flex from "../../layout/Flex";
+import React, { useRef, useState, useCallback, useEffect } from 'react'
+import styled from 'styled-components'
+import {
+  CheckBoxOutlineBlankIcon,
+  CheckBoxIcon,
+} from 'components/atoms/IconButton'
+import Text from 'components/atoms/Text'
+import Flex from 'components/layout/Flex'
 
 export interface CheckBoxProps
-  extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "defaultValue"> {
+  extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'defaultValue'> {
   /**
    * 표시 라벨
    */
-  label?: string;
+  label?: string
 }
 
 const CheckBoxElement = styled.input`
   display: none;
-`;
+`
 
 const Label = styled.label`
   cursor: pointer;
   margin-left: 6px;
   user-select: none;
-`;
+`
 
 /**
  * 체크 박스
  */
 const CheckBox = (props: CheckBoxProps) => {
-  const { id, label, onChange, checked, ...rest } = props;
-  const [isChecked, setIsChecked] = useState(checked);
-  const ref = useRef<HTMLInputElement>(null);
+  const { id, label, onChange, checked, ...rest } = props
+  const [isChecked, setIsChecked] = useState(checked)
+  const ref = useRef<HTMLInputElement>(null)
   const onClick = useCallback(
     (e: React.MouseEvent) => {
-      e.preventDefault();
+      e.preventDefault()
       // 체크 박수를 강제로 클릭
-      ref.current?.click();
-      setIsChecked((isChecked) => !isChecked);
+      ref.current?.click()
+      setIsChecked((isChecked) => !isChecked)
     },
-    [ref, setIsChecked]
-  );
+    [ref, setIsChecked],
+  )
 
   useEffect(() => {
     // 파라미터로부터 변경 내용을 받는다
-    setIsChecked(checked ?? false);
-  }, [checked]);
+    setIsChecked(checked ?? false)
+  }, [checked])
 
   return (
     <>
@@ -69,7 +72,7 @@ const CheckBox = (props: CheckBoxProps) => {
         )}
       </Flex>
     </>
-  );
-};
+  )
+}
 
-export default CheckBox;
+export default CheckBox

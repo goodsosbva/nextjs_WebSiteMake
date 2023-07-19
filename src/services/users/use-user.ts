@@ -1,31 +1,31 @@
-import useSWR from "swr";
-import type { ApiContext, User } from "@/types";
+import useSWR from 'swr'
+import type { ApiContext, User } from 'types'
 
 export type UseUserProps = {
   /**
    * 취득할 사용자 ID
    */
-  id: number;
+  id: number
   /**
    * 초기 상태
    */
-  initial?: User;
-};
+  initial?: User
+}
 
 export type UseUser = {
   /**
    * 취득할 사용자
    */
-  user?: User;
+  user?: User
   /**
    * 로드 플래그
    */
-  isLoading: boolean;
+  isLoading: boolean
   /**
    * 에러 플래그
    */
-  isError: boolean;
-};
+  isError: boolean
+}
 
 /**
  * 사용자 API(개별 취득)의 커스텀훅
@@ -34,17 +34,17 @@ export type UseUser = {
  */
 const useUser = (
   context: ApiContext,
-  { id, initial }: UseUserProps
+  { id, initial }: UseUserProps,
 ): UseUser => {
   const { data, error } = useSWR<User>(
-    `${context.apiRootUrl.replace(/\/$/g, "")}/users/${id}`
-  );
+    `${context.apiRootUrl.replace(/\/$/g, '')}/users/${id}`,
+  )
 
   return {
     user: data ?? initial,
     isLoading: !error && !data,
     isError: !!error,
-  };
-};
+  }
+}
 
-export default useUser;
+export default useUser

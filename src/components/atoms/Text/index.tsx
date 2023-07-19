@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
-import styled from "styled-components";
-import { Responsive } from "@/types/styles";
+import styled from 'styled-components'
+import type { Responsive } from 'types/styles'
 import {
   toPropValue,
   Space,
@@ -8,7 +8,7 @@ import {
   FontSize,
   LetterSpacing,
   LineHeight,
-} from '../../../utils/styles'
+} from 'utils/styles'
 
 // 텍스트 변형
 export type TextVariant =
