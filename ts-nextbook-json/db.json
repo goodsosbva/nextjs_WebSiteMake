@@ -365,5 +365,13 @@
       "profileImageUrl": "/users/3.png",
       "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry"
     }
+  ],
+  "portfolio": [
+    {
+      "id": 1,
+      "title": "자기소개사이트",
+      "url": "http://goodsosbva1.dothome.co.kr/",
+      "description": "나 자신을 소개하는 사이트 입니다."
+    }
   ]
 }
