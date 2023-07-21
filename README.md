@@ -95,3 +95,82 @@ ts-nextbook-json 폴더로 정의된 json 서버로 대체
 ### 2-1. API 클라이언트 구현
 
 ### 2-2. 컴포넌트 구현 준비(타입 정의, 반응형, 래퍼 컴포넌트 구현)
+
+## 3. 아토믹 디자인 패턴 구현 & 실구현
+
+- 3.1 아톰, 모리큘, 오거니즘 -> 템플릿
+- 3.2 디자인 패턴을 이용한 실구현
+
+## 4. Jest를 이용한 테스트 구현
+
+- 아래의 코드를 기본골자로 테스트를 구현
+
+```javascript
+
+import {
+ render,
+ act,
+ screen,
+ fireEvent,
+ RenderResult,
+} from "@testing-library/react";
+import { ThemeProvider } from "styled-components";
+import [테스트할 컴포넌트] from ".";
+import { theme } from "themes";
+
+describe("[테스트할 id]", () => {
+ let renderResult: RenderResult;
+ let handleSignin: jest.Mock;
+
+ beforeEach(() => {
+   // 더미 함수
+   handleSignin = jest.fn();
+   renderResult = render(
+     <ThemeProvider theme={theme}>
+       <[테스트할 컴포넌트] onSignin={handleSignin} />
+     </ThemeProvider>
+   );
+ });
+
+ afterEach(() => {
+   renderResult.unmount();
+ });
+
+ it('설명 문구', async () => {
+   // DOM이 변경되는 것을 보증, React Hook Form의 handleSubmit이 호출될 때까지 대기한다
+   await act(async () => {
+     // 사용자명 입력
+     const inputUsernameNode = screen.getByPlaceholderText(
+       /사용자명/
+     ) as HTMLInputElement;
+     fireEvent.change(inputUsernameNode, { target: { value: "user" } });
+     // 비밀번호 입력
+     const inputPasswordNode = screen.getByPlaceholderText(
+       /비밀번호/
+     ) as HTMLInputElement;
+     fireEvent.change(inputPasswordNode, { target: { value: "password" } });
+     // 로그인 버튼을 클릭
+     fireEvent.click(screen.getByText("로그인"));
+   });
+
+   // [테스트할 컴포넌트]이 호출되지 않는 것을 확인
+   expect(handleSignin).toHaveBeenCalledTimes(1);
+ });
+
+ it("사용자명 입력만으로는、변형 에러로 인한 onSignin이 호출되지 않는다", async () => {
+   // DOM기 업데이트되는 것을 보증, React Hook Form의 handleSubmit이 호출될 떄까지 대기한다
+   await act(async () => {
+     // 사용자명 입력
+     const inputUsernameNode = screen.getByPlaceholderText(
+       /사용자명/
+     ) as HTMLInputElement;
+     fireEvent.change(inputUsernameNode, { target: { value: "user" } });
+     // 로그인 버튼을 클릭
+     fireEvent.click(screen.getByText("로그인 버튼"));
+   });
+
+   // [테스트할 컴포넌트]가 호출되지 않은 것을 확인
+   expect(handleSignin).toHaveBeenCalledTimes(0);
+ });
+});
+```
