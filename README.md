@@ -1,8 +1,10 @@
-## Getting Started
+## 시작!
 
-First, run the development server:
+First, install & run the development server!
 
 ```bash
+npm install or npm i
+
 npm run dev
 # or
 yarn dev
