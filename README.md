@@ -186,5 +186,6 @@ describe("[테스트할 id]", () => {
 
 
 ## 5. 개발 완성된 모습
-![image](https://github.com/goodsosbva/nextjs_WebSiteMake/assets/62534722/9c7a4bfb-3b6a-4894-b0d6-eaeaaf1eaf29)
+![image](https://github.com/goodsosbva/nextjs_WebSiteMake/assets/62534722/9b46b555-6f3e-4c27-83d3-cb137f072224)
+
 
