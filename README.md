@@ -1,8 +1,10 @@
-## Getting Started
+## 시작!
 
-First, run the development server:
+First, install & run the development server!
 
 ```bash
+npm install or npm i
+
 npm run dev
 # or
 yarn dev
@@ -136,7 +138,7 @@ describe("[테스트할 id]", () => {
    renderResult.unmount();
  });
 
- it('설명 문구', async () => {
+ it('[테스트 될 상황 설명]', async () => {
    // DOM이 변경되는 것을 보증, React Hook Form의 handleSubmit이 호출될 때까지 대기한다
    await act(async () => {
      // 사용자명 입력
@@ -157,7 +159,7 @@ describe("[테스트할 id]", () => {
    expect(handleSignin).toHaveBeenCalledTimes(1);
  });
 
- it("사용자명 입력만으로는、변형 에러로 인한 onSignin이 호출되지 않는다", async () => {
+ it("[테스트 될 상황 설명]", async () => {
    // DOM기 업데이트되는 것을 보증, React Hook Form의 handleSubmit이 호출될 떄까지 대기한다
    await act(async () => {
      // 사용자명 입력
